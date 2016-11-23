@@ -1,12 +1,29 @@
 ---
 
+# This is YAML and indentation is meaningful, but not strict. For example, you
+# could indent two or four spaces (but not tabs) to start a list so long as you
+# are consistent for that logical layer of the data structure.
+
 - hosts:
-    pxe-bld403
+  # use 'all' here if you're also giving a comma-separated list of domain
+  # names as an argument to `ansible-playbook --inventory` or wish to target all
+  # hosts in the inventory file
+ #- all
+  # otherwise, give the name of a host group in the inventory file
+  - pxe-bld403
   roles:
-    - stacki-frontend
+  # you could comment the role below to verify dependencies with the ping task
+ #- stacki-frontend
+  tasks:
+  - ping:
   vars:
+  # this is always "backend" for now because there were errors when trying to
+  # maintain multiple appliances; it seems easier to just declare a new
+  # configuration for the default appliance for each build cycle
     stacki_appliance: backend
-    # M820: sda
-    # oVirt guest: vda
-    massdevice: sda
+  # the device name that will populate the storage.csv file
+    massdevice: sda # M820
+    #massdevice: vda # oVirt guest
+
+
 ...

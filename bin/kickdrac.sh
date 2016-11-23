@@ -1,5 +1,17 @@
 #!/bin/bash -eu
 #
+# call Dell iDRAC `racadm` via ssh to print a Stacki kicksheet and set boot next
+# to pxe for a range of target hosts
+#
+# tip: save yourself some typing by exporting SSHPASS which is expected by
+# `sshpass`. You could do something like this:
+# $ export SSHPASS=$(credstash get root@oob001.example.com)
+# # or
+# $ source <(gpg -d ~/etc/root-oob001.gpg)
+# # where
+# $ gpg -d ~/etc/root-oob001.gpg
+# export SSHPASS="correct horse battery staple"
+# 
 # improvements welcome:
 #   https://github.com/qrkourier/stacki-frontend
 #
