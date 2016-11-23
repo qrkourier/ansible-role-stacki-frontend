@@ -1,0 +1,12 @@
+---
+
+- hosts:
+    pxe-bld403
+  roles:
+    - stacki-frontend
+  vars:
+    stacki_appliance: backend
+    # M820: sda
+    # oVirt guest: vda
+    massdevice: sda
+...

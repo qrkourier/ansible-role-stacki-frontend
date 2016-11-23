@@ -1,0 +1,7 @@
+[vdc1:children]
+pxe-bld403
+
+[pxe-bld403]
+pxe001.bld403.clt4.example.com
+pxe002.bld403.clt4.example.com
+

@@ -1,0 +1,6 @@
+Name,Device,Mountpoint,Size,Type,Options
+{{ stacki_appliance }},{{ massdevice }},biosboot,1,biosboot,
+,{{ massdevice }},/,14962,xfs,
+,{{ massdevice }},/var,15990,xfs,
+,{{ massdevice }},swap,2048,swap,
+,{{ massdevice }},/state/partition1,0,xfs,

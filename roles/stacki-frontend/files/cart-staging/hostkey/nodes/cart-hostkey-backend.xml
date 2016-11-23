@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="no"?>
+<kickstart>
+
+	<description>
+        hostkey cart for backend to generate ssh host keys 
+	</description>
+
+        <!-- this cart is necessary to depart from the Rocks notion of "cluster"
+             wherein hosts share an identity and are implicitly trusted;
+             instead, we'll generate new host identities with this cart to
+             replace those that are copied from the Stacki frontend -->
+        <!-- <package></package> -->
+
+<post>
+
+<!-- explicit interpreter and fully escaped heredoc with CDATA tag in case we
+     want to add commands with reserved characters later -->
+
+  <![CDATA[#!/bin/sh
+
+  ]]>
+
+<!--
+  <file name="" perms="0600" owner="root:root">
+  <![CDATA[
+    ]]>
+  </file>
+-->
+
+</post>
+
+<!-- do something on first boot when networks and services are available -->
+<boot>
+</boot>
+
+</kickstart>

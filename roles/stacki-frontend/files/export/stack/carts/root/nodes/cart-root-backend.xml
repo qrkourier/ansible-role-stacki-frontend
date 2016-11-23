@@ -1,0 +1,38 @@
+<?xml version="1.0" standalone="no"?>
+<kickstart>
+
+	<description>
+        root cart backend appliance extensions
+	</description>
+
+        <!-- <package></package> -->
+
+<post>
+
+<!-- set up root's ssh authorization dir; we'll use the convention of an 
+     explicit interpreter and fully escaped heredoc with CDATA tag in case we
+     want to add commands with reserved characters later -->
+
+  <![CDATA[#!/bin/sh
+  usermod -p 'insert stdout from `mkpasswd --method=SHA-512 -s` to set password for' root
+  mkdir -p /root/.ssh/
+  chown -R root:root /root/.ssh/
+  chmod -R 0700 /root/.ssh/
+  ]]>
+
+        <!-- this does not work because it collides with Stacki's manipulation
+             of the same file; there is a way to re-order such operations but I
+             haven't yet figured it out  -->
+  <file mode="append" name="/root/.ssh/authorized_keys" perms="0600" owner="root:root">
+  <![CDATA[
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDW3ztuWyGuSe2dn+V7JOJ1qEqMOovLOtJIrYBDXrsCrZ43oeHHLRkV6/jWrFKKc7pCzGmmvbTVrlF8DtwW09Wh1zMws8LNQ8NdPxp54Y3jBb6gzsHXniuLfa2VCPburZAZpec+LblSVcs8OGa1cYqDY29D7mWsiZ+EPgD/asDFpoIuweRNAzoiusERIUwe2HYp4fBy/DeosCj4ZRu98vIQxyXbCbHcXwXPQL0LsL4Kru/MVJmOagwkykWd1i5OiylUPoZHsknB3rj4jGjcSXivn0Od+br/V7M3Koc2zlP9qVWAg8FmCkZbEJ9/oU1KRrZAd5eJXElIOWxyD+jkjTcn 
+    ]]>
+  </file>
+
+</post>
+
+<!-- do something on first boot when networks and services are available -->
+<boot>
+</boot>
+
+</kickstart>
