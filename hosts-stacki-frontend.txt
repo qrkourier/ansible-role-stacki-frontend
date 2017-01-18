@@ -2,6 +2,6 @@
 pxe-bld403
 
 [pxe-bld403]
-pxe001.bld403.clt4.example.com
-pxe002.bld403.clt4.example.com
+pxe001.bld403.vdc1.example.com
+pxe002.bld403.vdc1.example.com
 
